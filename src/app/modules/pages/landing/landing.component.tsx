@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import bannerImage from "../../../../assets/poster-builder.png";
 import { State } from "../../../business-logic/redux/config";
-import { getUser } from "../../../business-logic/redux/store/auth";
+import { getUser, signUp } from "../../../business-logic/redux/store/auth";
 import { CurrentUser } from "../../../typescript/types";
+import { BasicAuthModal } from "../../components/basic-auth-modal";
+import { Modal } from "../../components/modal";
 import "./landing.scss";
 
 const Landing: React.FC = () => {
@@ -12,9 +14,21 @@ const Landing: React.FC = () => {
     currentUser: CurrentUser;
   };
   const history = useHistory();
+  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
+
   const dispatch = useDispatch();
   dispatch(getUser());
   React.useEffect(() => {}, [dispatch]);
+
+  const handleSubmit = (values: {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  }) => {
+    dispatch(signUp(values));
+  };
+
   return (
     <>
       <div className="banner-wrapper">
@@ -54,8 +68,25 @@ const Landing: React.FC = () => {
               Sign in with Google
             </a>
           )}
+          <button
+            className="btn btn-primary"
+            onClick={() => setIsModalOpen(true)}
+          >
+            BasicAuth
+          </button>
         </div>
       </div>
+      <Modal
+        title="Sign Up"
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        children={
+          <BasicAuthModal
+            onSubmit={handleSubmit}
+            onClose={() => setIsModalOpen(false)}
+          />
+        }
+      />
     </>
   );
 };

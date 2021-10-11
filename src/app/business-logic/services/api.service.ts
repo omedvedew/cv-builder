@@ -1,4 +1,4 @@
-import { AuthService } from ".";
+import { AuthService } from "./auth.service";
 import { HttpService } from "./http";
 
 export class ApiService {
