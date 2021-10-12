@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.1.6",
     "@types/express": "^4.17.13",
     "@types/react-router-dom": "^5.3.1"
   }

@@ -1,33 +1,27 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Carousel } from "../../components";
 import bannerImage from "../../../../assets/poster-builder.png";
 import { State } from "../../../business-logic/redux/config";
-import { getUser, signUp } from "../../../business-logic/redux/store/auth";
+import { getUser } from "../../../business-logic/redux/store/auth";
 import { CurrentUser } from "../../../typescript/types";
-import { BasicAuthModal } from "../../components/basic-auth-modal";
-import { Modal } from "../../components/modal";
 import "./landing.scss";
+import One from "../../../../assets/107728685_100856581703923_5807569682165269738_n.jpg";
+import Two from "../../../../assets/Free-Modern-Professional-Resume-Template.jpg";
+import Four from "../../../../assets/preview.jpg";
 
 const Landing: React.FC = () => {
   const { currentUser } = useSelector((state: State) => state.auth) as {
     currentUser: CurrentUser;
   };
   const history = useHistory();
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
 
   const dispatch = useDispatch();
-  dispatch(getUser());
-  React.useEffect(() => {}, [dispatch]);
 
-  const handleSubmit = (values: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => {
-    dispatch(signUp(values));
-  };
+  React.useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <>
@@ -49,7 +43,7 @@ const Landing: React.FC = () => {
       <div className="landing-wrapper">
         <div className="container">
           <h2>Landing</h2>
-          {currentUser ? (
+          {currentUser?.id && (
             <div className="userContainer">
               <h3>Welcome, {currentUser.firstName}!</h3>
               <p>Let's start your CV creation.</p>
@@ -60,33 +54,24 @@ const Landing: React.FC = () => {
                 Go to dashboard
               </button>
             </div>
-          ) : (
-            <a
-              href="http://localhost:5000/auth/google"
-              className="btn btn-primary"
-            >
-              Sign in with Google
-            </a>
           )}
-          <button
-            className="btn btn-primary"
-            onClick={() => setIsModalOpen(true)}
-          >
-            BasicAuth
-          </button>
+
+          <Carousel
+            slidesSrcs={[
+              {
+                src: One,
+                alt: "1",
+              },
+              {
+                src: Two,
+                alt: "2",
+              },
+              { src: Four, alt: "4" },
+            ]}
+            title="Make your CV in few clicks"
+          />
         </div>
       </div>
-      <Modal
-        title="Sign Up"
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        children={
-          <BasicAuthModal
-            onSubmit={handleSubmit}
-            onClose={() => setIsModalOpen(false)}
-          />
-        }
-      />
     </>
   );
 };

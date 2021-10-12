@@ -10,9 +10,16 @@ const App: React.FC = () => {
   const { currentUser } = useSelector((state: State) => state.auth) as {
     currentUser: CurrentUser;
   };
+  const { appStatus } = useSelector((state: State) => state.general) as {
+    appStatus: boolean;
+  };
   const dispatch = useDispatch();
-  dispatch(appInit());
-  React.useEffect(() => {}, [dispatch]);
+
+  React.useEffect(() => {
+    if (!appStatus) {
+      dispatch(appInit());
+    }
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -25,9 +32,7 @@ const App: React.FC = () => {
       {currentUser?.id ? (
         <Route exact path="/dashboard" component={Dashboard} />
       ) : (
-        <Route exact path="/dashboard">
-          <Redirect to="/home" />
-        </Route>
+        <Redirect exact path="/dashboard" to="/home" />
       )}
     </BrowserRouter>
   );

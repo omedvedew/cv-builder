@@ -1,3 +1,3 @@
 export class GeneralState {
-  public appStatus!: boolean;
+  public appStatus: boolean | undefined;
 }

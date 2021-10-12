@@ -15,6 +15,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
         overflowX: "hidden",
         overflowY: "auto",
         outline: 0,
+        backgroundColor: "rgba(0,0,0,0.7)",
       }}
     >
       <div className="modal-dialog">

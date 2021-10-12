@@ -16,7 +16,20 @@ export class AuthService {
     lastName: string;
   }) =>
     this.http.request({
-      url: "/auth/basic",
+      url: "/auth/sign-up",
+      method: "POST",
+      data: payload,
+    });
+
+  public logOut = () =>
+    this.http.request({
+      url: "/auth/logout",
+      method: "GET",
+    });
+
+  public logIn = (payload: { email: string; password: string }) =>
+    this.http.request({
+      url: "/auth/login",
       method: "POST",
       data: payload,
     });

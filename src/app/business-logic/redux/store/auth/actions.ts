@@ -17,4 +17,13 @@ const signUp = make("[auth] basicSignUp")
   )
   .stage("success", (payload) => payload);
 
-export { getUser, signUp };
+const logOut = make("[auth] logOut").stage(
+  "success",
+  (payload: CurrentUser) => payload
+);
+
+const logIn = make("[auth] logIn")
+  .stage((payload: { email: string; password: string }) => payload)
+  .stage("success", (payload: CurrentUser) => payload);
+
+export { getUser, signUp, logOut, logIn };
