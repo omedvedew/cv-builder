@@ -81,21 +81,21 @@ const Header: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsLoginModalOpen(true)}
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-light"
                   >
                     LogIn
                   </button>
                   <a
                     type="button"
                     href="/auth/google"
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-light"
                   >
                     LogIn with Google
                   </a>
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(true)}
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-light"
                   >
                     SignUp
                   </button>

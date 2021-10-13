@@ -5,3 +5,4 @@ export * from "./modal";
 export * from "./login-modal";
 export * from "./carousel";
 export * from "./error-message";
+export * from "./flow-description";

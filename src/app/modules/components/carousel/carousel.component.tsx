@@ -10,7 +10,7 @@ const Carousel: React.FC<CarouselProps> = ({ title, slidesSrcs }) => {
   });
 
   return (
-    <div className="container">
+    <div className="carousel-wrapper">
       <h2>{title}</h2>
       <div
         ref={carouselRef}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Carousel } from "../../components";
+import { Carousel, FlowDescription } from "../../components";
 import bannerImage from "../../../../assets/poster-builder.png";
 import { State } from "../../../business-logic/redux/config";
 import { getUser } from "../../../business-logic/redux/store/auth";
@@ -42,9 +42,8 @@ const Landing: React.FC = () => {
       </div>
       <div className="landing-wrapper">
         <div className="container">
-          <h2>Landing</h2>
           {currentUser?.id && (
-            <div className="userContainer">
+            <div className="user-container">
               <h3>Welcome, {currentUser.firstName}!</h3>
               <p>Let's start your CV creation.</p>
               <button
@@ -55,6 +54,8 @@ const Landing: React.FC = () => {
               </button>
             </div>
           )}
+
+          <FlowDescription />
 
           <Carousel
             slidesSrcs={[
@@ -68,7 +69,7 @@ const Landing: React.FC = () => {
               },
               { src: Four, alt: "4" },
             ]}
-            title="Make your CV in few clicks"
+            title="Achieve a completed resume"
           />
         </div>
       </div>
