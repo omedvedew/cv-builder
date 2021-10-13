@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import { State } from "./business-logic/redux/config";
 import { appInit } from "./business-logic/redux/store/general";
-import { Dashboard, Header, Landing } from "./modules";
+import { Dashboard, Footer, Header, Landing } from "./modules";
 import { CurrentUser } from "./typescript/types";
 
 const App: React.FC = () => {
@@ -24,7 +24,6 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-
       <Route exact path="/">
         <Redirect to="/home" />
       </Route>
@@ -34,6 +33,7 @@ const App: React.FC = () => {
       ) : (
         <Redirect exact path="/dashboard" to="/home" />
       )}
+      <Footer />
     </BrowserRouter>
   );
 };

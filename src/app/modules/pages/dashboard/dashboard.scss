@@ -1,0 +1,27 @@
+.dashboard-wrapper {
+  background: linear-gradient(to bottom left, #fff, rgb(130, 130, 145));
+  border-top: 7px solid rgb(240, 240, 245);
+  border-bottom: 7px solid rgb(240, 240, 245);
+
+  > .container {
+    background-color: rgba(250, 250, 255, 0.7);
+    padding: 100px 50px;
+
+    .ready-cvs {
+      display: flex;
+      width: 100%;
+      flex-flow: row wrap;
+      column-gap: 20px;
+      row-gap: 20px;
+
+      .card {
+        box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-img-top {
+        max-height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+}

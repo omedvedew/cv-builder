@@ -1,0 +1,79 @@
+.footer-wrapper {
+  display: flex;
+  width: 100%;
+  background-color: rgb(33, 37, 41);
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-flow: row nowrap;
+    color: #fff;
+
+    padding: 50px 0;
+
+    .project-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h5 {
+        position: relative;
+
+        .trident {
+          display: block;
+          width: 25px;
+          height: auto;
+          object-fit: contain;
+        }
+
+        &::before {
+          display: block;
+          content: "Lviv";
+          position: absolute;
+          top: 5px;
+          right: 30px;
+        }
+
+        &::after {
+          display: block;
+          content: "Ukraine";
+          position: absolute;
+          top: 5px;
+          left: 30px;
+        }
+      }
+    }
+
+    .likes-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 100px;
+
+      button {
+        min-width: 75px;
+      }
+    }
+
+    .contact-block {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      row-gap: 15px;
+      justify-content: center;
+      align-items: center;
+
+      h5 {
+        justify-self: flex-start;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+      }
+    }
+  }
+}

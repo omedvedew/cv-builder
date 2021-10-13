@@ -67,7 +67,7 @@ const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => dispatch(logOut())}
-                className="btn btn-outline-primary"
+                className="btn btn-outline-light"
               >
                 Log out
               </button>

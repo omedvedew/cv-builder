@@ -1,22 +1,14 @@
 import * as React from "react";
 import { ModalProps } from "./modal.interface";
+import "./modal.scss";
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
   return (
     <div
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 1055,
         display: isOpen ? "block" : "none",
-        width: "100%",
-        height: "100%",
-        overflowX: "hidden",
-        overflowY: "auto",
-        outline: 0,
-        backgroundColor: "rgba(0,0,0,0.7)",
       }}
+      className="modal-wrapper"
     >
       <div className="modal-dialog">
         <div className="modal-content">

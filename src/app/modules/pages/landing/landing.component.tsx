@@ -23,6 +23,12 @@ const Landing: React.FC = () => {
     dispatch(getUser());
   }, [dispatch]);
 
+  React.useEffect(() => {
+    if (document) {
+      document.title = "CV-Builder";
+    }
+  }, []);
+
   return (
     <>
       <div className="banner-wrapper">

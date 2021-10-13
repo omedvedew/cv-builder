@@ -16,7 +16,6 @@ const BasicAuthModal: React.FC<BasicAuthModalProps> = ({
 
   React.useEffect(() => {
     setShowErrorMessage(currentUser?.errorMessage ? true : false);
-    console.log(currentUser, showErrorMessage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
   return (
