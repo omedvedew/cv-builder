@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  column-gap: 20px;
+
+  .form-field {
+    display: flex;
+    width: calc(50% - 10px);
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+
+  .fullwidth {
+    width: 100%;
+  }
+
+  .controls {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
+}

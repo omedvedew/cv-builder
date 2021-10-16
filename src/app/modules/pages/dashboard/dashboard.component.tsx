@@ -6,8 +6,10 @@ import {
 } from "../../../business-logic/redux/store/dashboard";
 import "./dashboard.scss";
 import Example from "../../../../assets/Free-Modern-Professional-Resume-Template.jpg";
+import { CVBuildFlowModal, Modal } from "../../components";
 
 const Dashboard: React.FC = () => {
+  const [isFlowModalOpen, setIsFlowModalOpen] = React.useState<boolean>(false);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -18,14 +20,18 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-wrapper">
       <div className="container">
-        <div className="d-grid gap-2">
-          <a href="/" className="btn btn-outline-dark">
-            Go somewhere
-          </a>
+        <div className="d-grid gap-2 add-cv-container">
+          <button
+            onClick={() => setIsFlowModalOpen(true)}
+            className="btn btn-outline-success"
+          >
+            + Add resume
+          </button>
         </div>
         <h1>Dashboard</h1>
         <button onClick={() => dispatch(getAllSoftSkills())}>SS</button>
         <button onClick={() => dispatch(getAllTechSkills())}>TS</button>
+        {/* READY CVS */}
         <div className="ready-cvs">
           <div className="card" style={{ width: "18rem" }}>
             <img src={Example} className="card-img-top" alt="cv-example" />
@@ -42,6 +48,16 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={isFlowModalOpen}
+        onClose={() => setIsFlowModalOpen(false)}
+        title="CV-Builder"
+        large
+        children={
+          <CVBuildFlowModal onClose={() => setIsFlowModalOpen(false)} />
+        }
+      />
     </div>
   );
 };

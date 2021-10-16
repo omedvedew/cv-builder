@@ -54,7 +54,10 @@ const Landing: React.FC = () => {
               <p>Let's start your CV creation.</p>
               <button
                 className="btn btn-primary"
-                onClick={() => history.push("/dashboard")}
+                onClick={() => {
+                  history.push("/dashboard");
+                  window?.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Go to dashboard
               </button>

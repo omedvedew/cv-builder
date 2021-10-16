@@ -7,3 +7,4 @@ export * from "./carousel";
 export * from "./error-message";
 export * from "./flow-description";
 export * from "./footer";
+export * from "./cv-build-flow-modal";

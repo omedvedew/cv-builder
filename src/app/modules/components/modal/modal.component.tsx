@@ -2,7 +2,13 @@ import * as React from "react";
 import { ModalProps } from "./modal.interface";
 import "./modal.scss";
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
+const Modal: React.FC<ModalProps> = ({
+  large,
+  isOpen,
+  onClose,
+  children,
+  title,
+}) => {
   return (
     <div
       style={{
@@ -10,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
       }}
       className="modal-wrapper"
     >
-      <div className="modal-dialog">
+      <div className={`modal-dialog ${large && "modal-xl"}`}>
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="staticBackdropLabel">
