@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import * as React from "react";
 import { Stage1Props } from "./stage-1.interface";
-import "./stage-1.scss";
 
 const Stage1: React.FC<Stage1Props> = ({ onClose, onNext, onSubmit }) => (
   <>
@@ -92,7 +91,7 @@ const Stage1: React.FC<Stage1Props> = ({ onClose, onNext, onSubmit }) => (
               />
             </div>
             <div className="form-field">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="basic-email" className="form-label">
                 Email:
               </label>
               <input
@@ -100,7 +99,7 @@ const Stage1: React.FC<Stage1Props> = ({ onClose, onNext, onSubmit }) => (
                 placeholder="Enter your email."
                 type="email"
                 className="form-control"
-                id="email"
+                id="basic-email"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setFieldValue("contacts", {
                     ...values.contacts,

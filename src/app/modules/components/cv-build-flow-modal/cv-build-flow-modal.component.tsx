@@ -8,7 +8,8 @@ import {
   CVBuiledFlowModalProps,
   CVFormValues,
 } from "./cv-build-flow-modal.interface";
-import { Stage1, Stage2 } from "./stages";
+import { Stage1, Stage2, Stage3, Stage4, Stage5, Stage6 } from "./stages";
+import "./cv-build-flow-modal.scss";
 
 const CVBuildFlowModal: React.FC<CVBuiledFlowModalProps> = ({ onClose }) => {
   const [currentStage, setCurrentStage] = React.useState<number>(1);
@@ -47,6 +48,81 @@ const CVBuildFlowModal: React.FC<CVBuiledFlowModalProps> = ({ onClose }) => {
           onNext={() => setCurrentStage(3)}
           onSubmit={handleSubmit}
         />
+      );
+
+    case 3:
+      return (
+        <Stage3
+          onClose={onClose}
+          onBack={() => setCurrentStage(2)}
+          onNext={() => setCurrentStage(4)}
+          onSubmit={handleSubmit}
+        />
+      );
+
+    case 4:
+      return (
+        <Stage4
+          onClose={onClose}
+          onBack={() => setCurrentStage(3)}
+          onNext={() => setCurrentStage(5)}
+          onSubmit={handleSubmit}
+        />
+      );
+
+    case 5:
+      return (
+        <Stage5
+          onClose={onClose}
+          onBack={() => setCurrentStage(4)}
+          onNext={() => setCurrentStage(6)}
+          onSubmit={handleSubmit}
+        />
+      );
+
+    case 6:
+      return (
+        <Stage6
+          onClose={onClose}
+          onBack={() => setCurrentStage(4)}
+          onSubmit={() => {
+            console.log(formValues);
+            setCurrentStage(7);
+          }}
+          values={formValues}
+        />
+      );
+
+    case 7:
+      return (
+        <>
+          <div className="stage-content" style={{ marginBottom: "20px" }}>
+            <div className="alert alert-success" role="alert">
+              Your CV was successfuly generated!
+            </div>
+            <button
+              onClick={() => {
+                if (onClose) {
+                  setCurrentStage(1);
+                  onClose();
+                }
+              }}
+              className="btn btn-primary"
+            >
+              close
+            </button>
+          </div>
+          <div className="progress">
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: "100%" }}
+              aria-valuenow={100}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            />
+          </div>
+        </>
       );
 
     default:

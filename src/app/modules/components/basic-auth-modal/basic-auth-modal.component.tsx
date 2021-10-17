@@ -89,7 +89,10 @@ const BasicAuthModal: React.FC<BasicAuthModalProps> = ({
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="InputEmail1" className="form-label">
+                    <label
+                      htmlFor="BasicAuthInputEmail1"
+                      className="form-label"
+                    >
                       Email address
                     </label>
                     <input
@@ -97,7 +100,7 @@ const BasicAuthModal: React.FC<BasicAuthModalProps> = ({
                       placeholder="Enter your email."
                       type="email"
                       className="form-control"
-                      id="InputEmail1"
+                      id="BasicAuthInputEmail1"
                       aria-describedby="emailHelp"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setFieldValue("email", e.currentTarget.value)
@@ -108,7 +111,7 @@ const BasicAuthModal: React.FC<BasicAuthModalProps> = ({
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="Password1" className="form-label">
+                    <label htmlFor="BasicAuthPassword1" className="form-label">
                       Password
                     </label>
                     <input
@@ -116,7 +119,7 @@ const BasicAuthModal: React.FC<BasicAuthModalProps> = ({
                       placeholder="Enter your password."
                       type="password"
                       className="form-control"
-                      id="InputPassword1"
+                      id="BasicAuthPassword1"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setFieldValue("password", e.currentTarget.value)
                       }

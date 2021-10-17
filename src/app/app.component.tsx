@@ -19,7 +19,7 @@ const App: React.FC = () => {
     if (!appStatus) {
       dispatch(appInit());
     }
-  }, [dispatch]);
+  }, [dispatch, appStatus]);
 
   return (
     <BrowserRouter>

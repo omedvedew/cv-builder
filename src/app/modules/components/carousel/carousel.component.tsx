@@ -5,6 +5,7 @@ import "./carousel.scss";
 
 const Carousel: React.FC<CarouselProps> = ({ title, slidesSrcs }) => {
   const carouselRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const carousel = new bootstrap.Carousel(carouselRef.current, {
     interval: 2500,
   });
