@@ -1,5 +1,5 @@
 import { make } from "redux-chill";
-import { SoftSkill, TechSkill } from "../../../../typescript/types";
+import { Resume, SoftSkill, TechSkill } from "../../../../typescript/types";
 
 const getAllTechSkills = make("[dashboard] getAllTechSkills").stage(
   "success",
@@ -11,4 +11,12 @@ const getAllSoftSkills = make("[dashBoard] getAllSoftSkills").stage(
   (payload: SoftSkill) => payload
 );
 
-export { getAllTechSkills, getAllSoftSkills };
+const saveCV = make("[dashboard] saveCV")
+  .stage((payload: Resume) => payload)
+  .stage("success", (payload: Resume) => payload);
+
+const getCVs = make("[dashboard] getCVs")
+  .stage((payload: string) => payload)
+  .stage("success", (payload: Array<Resume>) => payload);
+
+export { getAllTechSkills, getAllSoftSkills, saveCV, getCVs };

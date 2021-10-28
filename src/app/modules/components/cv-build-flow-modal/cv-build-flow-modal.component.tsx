@@ -1,8 +1,9 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getAllSoftSkills,
   getAllTechSkills,
+  saveCV,
 } from "../../../business-logic/redux/store/dashboard";
 import {
   CVBuiledFlowModalProps,
@@ -10,8 +11,10 @@ import {
 } from "./cv-build-flow-modal.interface";
 import { Stage1, Stage2, Stage3, Stage4, Stage5, Stage6 } from "./stages";
 import "./cv-build-flow-modal.scss";
+import { State } from "../../../business-logic/redux/config";
 
 const CVBuildFlowModal: React.FC<CVBuiledFlowModalProps> = ({ onClose }) => {
+  const { currentUser } = useSelector((state: State) => state.auth);
   const [currentStage, setCurrentStage] = React.useState<number>(1);
   const [formValues, setFormValues] = React.useState<CVFormValues>();
 
@@ -87,6 +90,9 @@ const CVBuildFlowModal: React.FC<CVBuiledFlowModalProps> = ({ onClose }) => {
           onBack={() => setCurrentStage(4)}
           onSubmit={() => {
             console.log(formValues);
+            if (currentUser?.id) {
+              dispatch(saveCV({ ...formValues, userId: currentUser.id }));
+            }
             setCurrentStage(7);
           }}
           values={formValues}

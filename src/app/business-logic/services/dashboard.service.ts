@@ -1,3 +1,4 @@
+import { Resume } from "../../typescript/types";
 import { HttpService } from "./http";
 
 export class DashboardService {
@@ -13,5 +14,18 @@ export class DashboardService {
     this.http.request({
       url: "/api/dashboard/all-soft-skills",
       method: "GET",
+    });
+
+  public saveCV = (payload: Resume) =>
+    this.http.request({
+      url: "/api/dashboard/resume-save",
+      method: "post",
+      data: payload,
+    });
+
+  public getCVs = (payload: string) =>
+    this.http.request({
+      url: `/api/dashboard/resumes?userId=${payload}`,
+      method: "get",
     });
 }
